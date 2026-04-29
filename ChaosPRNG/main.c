@@ -27,23 +27,24 @@ int main(int argc, char* argv[]) {
 	{
 		PRNG_next(&ctx);
 	}
-	FILE* output_file = fopen(argv[3], "w");
 	//Generación de números aleatorios y guardado en el archivo de salida
 	if (strcmp(argv[4], "BIN") == 0) {
+		FILE* output_file = fopen(argv[3], "wb");
 		for (long i = 0; i < atoi(argv[2]); i++) { // Generar unos 400MB mínimo
 			uint32_t num = PRNG_next(&ctx);
 			fwrite(&num, sizeof(uint32_t), 1, output_file);
 		}
+		fclose(output_file);
 	}
 	else {
+		FILE* output_file = fopen(argv[3], "w");
 		for (int i = 0; i < atoi(argv[2]); i++)
 		{
 			uint32_t random_number = PRNG_next(&ctx);
 			fprintf(output_file, "%u\n", random_number);
 		}
-	
+		fclose(output_file);
 	}
-	fclose(output_file);
 	printf("Números aleatorios generados y guardados en %s\n", argv[3]);
 	return 0;
 
