@@ -1,6 +1,6 @@
 #include "ChaosPRNG.h"
 
-void bit_reorganization(PRNG_context* ctx, uint32_t* res) {
+static void bit_reorganization(PRNG_context* ctx, uint32_t* res) {
 	//Reorganización de bits
 	//Devuelve [x0, x1, x2, x3]
 
@@ -10,7 +10,7 @@ void bit_reorganization(PRNG_context* ctx, uint32_t* res) {
 	res[3] = ((ctx->s[2] & 0x0000FFFF) << 16) | (ctx->s[0] >> 15); //x3
 }
 
-uint32_t F1(PRNG_context* ctx)
+static uint32_t F1(PRNG_context* ctx)
 {
 	//Calcula el siguente valor de x usando el mapa caótico F1 y lo guarda en el estado interno del PRNG
 	//Devuelve el nuevo valor de x transformado en un int de 32 bits sin signo
@@ -21,7 +21,7 @@ uint32_t F1(PRNG_context* ctx)
 	return res;
 }
 
-uint32_t F2(PRNG_context* ctx)
+static uint32_t F2(PRNG_context* ctx)
 {
 	//Calcula el siguente valor de y usando el mapa caótico F2 y lo guarda en el estado interno del PRNG
 	//Devuelve el nuevo valor de y transformado en un int de 32 bits sin signo
@@ -32,7 +32,7 @@ uint32_t F2(PRNG_context* ctx)
 	return res;
 }
 
-uint32_t F(PRNG_context* ctx, uint32_t variables[4])
+static uint32_t F(PRNG_context* ctx, uint32_t variables[4])
 {
 	//Ejecuta la función no lineal F
 	uint32_t D = (variables[0] ^ ctx->R1) + ctx->R2;
