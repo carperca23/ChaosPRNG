@@ -18,12 +18,18 @@
     <ClInclude Include="ChaosPRNG.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="utils.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ChaosPRNG.c">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="main.c">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="utils.c">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>

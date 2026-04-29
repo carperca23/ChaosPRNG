@@ -1,6 +1,7 @@
 #pragma once
 #include <stdint.h>
 
+
 #define MOD31 2147483647 //2^31 - 1
 
 //Estado interno del PRNG

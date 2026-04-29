@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="ChaosPRNG/ChaosPRNG.vcxproj" />
+  <Project Path="ChaosPRNG/ChaosPRNG.vcxproj" Id="fb51283e-1d37-410b-8296-d6ed3cabd97f" />
 </Solution>
