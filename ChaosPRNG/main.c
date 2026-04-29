@@ -41,8 +41,10 @@ int main(int argc, char* argv[]) {
 			uint32_t random_number = PRNG_next(&ctx);
 			fprintf(output_file, "%u\n", random_number);
 		}
-		fclose(output_file);
-		printf("Números aleatorios generados y guardados en %s\n", argv[3]);
-		return 0;
+	
 	}
+	fclose(output_file);
+	printf("Números aleatorios generados y guardados en %s\n", argv[3]);
+	return 0;
+
 }
