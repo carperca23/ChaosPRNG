@@ -2,12 +2,13 @@
 #include "utils.h"
 
 int main(int argc, char* argv[]) {
-	if (argc < 4)
+	if (argc < 5)
 	{
 		printf("Se necesitan los siguientes parámetros:\n");
 		printf("[1] Ubicación del archivo .txt con las semillas.\n");
 		printf("[2] Cantidad de números aleatorios a generar.\n");
 		printf("[3] Ubicación del archivo de salida para los números generados.\n");
+		printf("[4] Formato de la salida TXT ó BIN");
 		return 1;
 	}
 
@@ -26,15 +27,22 @@ int main(int argc, char* argv[]) {
 	{
 		PRNG_next(&ctx);
 	}
-
-	//Generación de números aleatorios y guardado en el archivo de salida
 	FILE* output_file = fopen(argv[3], "w");
-	for (int i = 0; i < atoi(argv[2]); i++)
-	{
-		uint32_t random_number = PRNG_next(&ctx);
-		fprintf(output_file, "%u\n", random_number);
+	//Generación de números aleatorios y guardado en el archivo de salida
+	if (strcmp(argv[4], "BIN") == 0) {
+		for (long i = 0; i < atoi(argv[2]); i++) { // Generar unos 400MB mínimo
+			uint32_t num = PRNG_next(&ctx);
+			fwrite(&num, sizeof(uint32_t), 1, output_file);
+		}
 	}
-	fclose(output_file);
-	printf("Números aleatorios generados y guardados en %s\n", argv[3]);
-	return 0;
+	else {
+		for (int i = 0; i < atoi(argv[2]); i++)
+		{
+			uint32_t random_number = PRNG_next(&ctx);
+			fprintf(output_file, "%u\n", random_number);
+		}
+		fclose(output_file);
+		printf("Números aleatorios generados y guardados en %s\n", argv[3]);
+		return 0;
+	}
 }
