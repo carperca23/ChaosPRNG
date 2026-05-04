@@ -1,7 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Definición de la función F2 según el documento "07.pdf"
 def F2(y):
     return 4 * y**3 - 3 * y
 
