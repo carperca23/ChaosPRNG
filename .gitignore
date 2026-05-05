@@ -363,3 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 
 x64/
+*.bin
